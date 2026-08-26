@@ -1,13 +1,14 @@
 ---
 import { whatsapp, whatsappDisplay } from '../data/site';
+import Icon from './Icon.astro';
 ---
 <footer class="footer">
   <div class="shell footer-main">
     <div class="footer-brand"><img src="/logo-meraki.png" alt="MERAKI" width="84" height="84"/><p>Arquitectura, construcción e interiorismo.<br/>De la idea a la obra, un solo equipo.</p></div>
     <div class="footer-col"><span>Navegación</span><a href="/">Inicio</a><a href="/estudio">Estudio</a><a href="/servicios">Servicios</a><a href="/proyectos">Proyectos</a><a href="/contacto">Contacto</a></div>
     <div class="footer-col"><span>Servicios</span><a href="/servicios">Diseño arquitectónico</a><a href="/servicios">Construcción</a><a href="/servicios">Interiorismo</a><a href="/servicios">Gestión</a></div>
-    <div class="footer-col"><span>Contacto</span><a href={`https://wa.me/${whatsapp}`}>{whatsappDisplay}</a><p>Lima, Perú</p><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a></div>
+    <div class="footer-col"><span>Contacto</span><a class="footer-contact-link" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer"><Icon name="message-circle" size={15}/>{whatsappDisplay}</a><p class="footer-contact-link"><Icon name="map-pin" size={15}/>Lima, Perú</p><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a></div>
   </div>
-  <div class="shell footer-bottom"><span>© 2026 MERAKI Arquitectura & Construcción</span><button type="button" data-back-top>Volver arriba ↑</button></div>
+  <div class="shell footer-bottom"><span>© 2026 MERAKI Arquitectura & Construcción</span><button type="button" data-back-top>Volver arriba <Icon name="arrow-up" size={15}/></button></div>
 </footer>
-<a class="whatsapp-fab" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.7 11.7 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.5-8.4Zm-8.4 18.2h-.1a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.5 4.7Zm5.4-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.5.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.9.3 1.7.2 2.3.1.7-.1 1.7-.7 1.9-1.3.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z" fill="currentColor"/></svg></a>
+<a class="whatsapp-fab" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp"><Icon name="message-circle" size={27} strokeWidth={1.8}/></a>

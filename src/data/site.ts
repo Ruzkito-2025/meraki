@@ -2,10 +2,10 @@ export const whatsapp = '51973550253';
 export const whatsappDisplay = '+51 973 550 253';
 
 export const services = [
-  { num:'01', title:'Diseño arquitectónico', copy:'Propuestas funcionales, estéticas y sostenibles que responden a las necesidades de cada cliente y cada contexto.' },
-  { num:'02', title:'Ingeniería & gestión', copy:'Coordinamos especialidades, documentación y decisiones técnicas para que el proyecto avance con orden y claridad.' },
-  { num:'03', title:'Construcción', copy:'Ejecutamos y supervisamos cada etapa de obra, cuidando calidad, tiempos, costos y detalle constructivo.' },
-  { num:'04', title:'Interiorismo', copy:'Diseñamos ambientes desde la materialidad, iluminación, texturas, vegetación, mobiliario y composición.' }
+  { num:'01', icon:'drafting-compass', title:'Diseño arquitectónico', copy:'Propuestas funcionales, estéticas y sostenibles que responden a las necesidades de cada cliente y cada contexto.' },
+  { num:'02', icon:'ruler', title:'Ingeniería & gestión', copy:'Coordinamos especialidades, documentación y decisiones técnicas para que el proyecto avance con orden y claridad.' },
+  { num:'03', icon:'hard-hat', title:'Construcción', copy:'Ejecutamos y supervisamos cada etapa de obra, cuidando calidad, tiempos, costos y detalle constructivo.' },
+  { num:'04', icon:'palette', title:'Interiorismo', copy:'Diseñamos ambientes desde la materialidad, iluminación, texturas, vegetación, mobiliario y composición.' }
 ];
 
 export const projects = [
