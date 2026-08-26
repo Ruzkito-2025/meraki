@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/site';
+export function getStaticPaths(){return projects.map(project=>({params:{slug:project.slug},props:{project}}));}
+const { project } = Astro.props;
+---
+<BaseLayout title={`${project.name} | MERAKI`} description={project.description} image={project.images[0]}>
+  <section class="project-detail-hero"><img src={project.images[0]} alt={project.name}/><div class="project-detail-overlay"></div><div class="shell project-detail-title"><a href="/proyectos">← Proyectos</a><span>{project.category}</span><h1>{project.name}</h1><p>{project.place} · {project.date}</p></div></section>
+  <section class="section"><div class="shell project-meta"><div><span>Ubicación</span><strong>{project.place}</strong></div><div><span>Fecha</span><strong>{project.date}</strong></div><div><span>Área</span><strong>{project.area}</strong></div><div><span>Niveles</span><strong>{project.levels}</strong></div></div><div class="shell project-description"><div class="section-label">El proyecto</div><p>{project.description}</p></div><div class="shell project-gallery">{project.images.map((img,index)=><figure class:list={{wide:index===0}}><img src={img} loading={index===0?'eager':'lazy'} alt={`${project.name} — vista ${index+1}`}/></figure>)}</div></section>
+  <section class="cta-band section-dark"><div class="shell cta-band-inner"><div><span>¿Tienes un proyecto en mente?</span><h2>Conversemos sobre tu espacio.</h2></div><a class="nav-cta" href="/contacto"><span>Hablemos</span><i>↗</i></a></div></section>
+</BaseLayout>

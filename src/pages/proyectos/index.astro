@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects, projectsWithoutImages } from '../../data/site';
+---
+<BaseLayout title="Proyectos | MERAKI" description="Portafolio de arquitectura residencial y comercial de MERAKI.">
+  <section class="inner-hero"><div class="shell inner-hero-grid"><div><div class="section-label"><span>01</span> Proyectos</div><h1>Espacios con identidad.<br/><em>Obras con propósito.</em></h1></div><p>Una selección de vivienda, interiorismo y arquitectura comercial desarrollada por MERAKI.</p></div></section>
+  <section class="projects section"><div class="shell project-filters"><button class="is-active" data-filter="all">Todos</button><button data-filter="vivienda">Vivienda</button><button data-filter="comercial">Comercial</button></div><div class="shell project-grid project-grid-all">{projects.map(project => <a class="project-card reveal" href={`/proyectos/${project.slug}`} data-project-type={project.type}><figure><img src={project.images[0]} loading="lazy" alt={project.name}/></figure><div class="project-card-copy"><span>{project.category}</span><h2>{project.name}</h2><p>{project.place} · {project.date}</p></div></a>)}</div><div class="shell text-only-projects reveal"><h2>Otros proyectos documentados</h2>{projectsWithoutImages.map(project => <article><strong>{project.name}</strong><span>{project.place} · {project.date}</span><span>{project.detail}</span><p>{project.description}</p></article>)}</div></section>
+  <script slot="scripts" is:inline>document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('is-active'));btn.classList.add('is-active');const f=btn.dataset.filter;document.querySelectorAll('[data-project-type]').forEach(card=>card.hidden=f!=='all'&&card.dataset.projectType!==f);}));</script>
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { services } from '../data/site';
+---
+<BaseLayout title="Servicios | MERAKI" description="Diseño arquitectónico, ingeniería, construcción e interiorismo en MERAKI.">
+  <section class="inner-hero"><div class="shell inner-hero-grid"><div><div class="section-label"><span>01</span> Servicios</div><h1>Soluciones integrales<br/><em>para cada etapa.</em></h1></div><p>Diseño, técnica y ejecución conectados en un mismo proceso para acompañar cada proyecto desde la idea hasta la entrega.</p></div></section>
+  <section class="services section"><div class="shell service-list service-list-large">{services.map(service => <article class="service-row reveal"><span class="service-num">{service.num}</span><h2>{service.title}</h2><p>{service.copy}</p></article>)}</div></section>
+  <section class="section section-soft"><div class="shell split-feature"><div><div class="section-label">Cómo trabajamos</div><h2>Un solo equipo.<br/><em>De la idea a la obra.</em></h2></div><div><p>Coordinamos diseño, especialidades técnicas y decisiones de obra para reducir fricciones entre etapas y mantener una visión coherente del proyecto.</p><a class="nav-cta inline-cta" href="/contacto"><span>Cuéntanos tu proyecto</span><i>↗</i></a></div></div></section>
+</BaseLayout>

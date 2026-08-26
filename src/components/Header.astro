@@ -1,0 +1,15 @@
+---
+const path = Astro.url.pathname;
+const nav = [
+  ['/','Inicio'],['/estudio','Estudio'],['/servicios','Servicios'],['/proyectos','Proyectos'],['/contacto','Contacto']
+];
+---
+<header class="site-header is-scrolled" data-header>
+  <div class="shell nav-wrap">
+    <a class="logo-link" href="/" aria-label="MERAKI — Inicio"><img class="brand brand-dark" src="/logo-meraki-dark.png" alt="MERAKI" width="82" height="82" /><img class="brand brand-light" src="/logo-meraki.png" alt="" aria-hidden="true" width="82" height="82" /></a>
+    <nav class="desktop-nav" aria-label="Navegación principal">{nav.map(([href,label]) => <a href={href} class:list={{active:path===href}}>{label}</a>)}</nav>
+    <a class="nav-cta" href="/contacto"><span>Hablemos</span><i>↗</i></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu><div class="mobile-menu-inner shell">{nav.map(([href,label],i) => <a href={href}>{label} <span>0{i+1}</span></a>)}</div></div>
+</header>
