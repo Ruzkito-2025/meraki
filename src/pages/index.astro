@@ -1,0 +1,259 @@
+---
+import '../styles/global.css';
+
+const whatsapp = '51973550253';
+const whatsappDisplay = '+51 973 550 253';
+
+const services = [
+  { num:'01', title:'Diseño arquitectónico', copy:'Propuestas funcionales, estéticas y sostenibles que responden a las necesidades de cada cliente y cada contexto.' },
+  { num:'02', title:'Ingeniería & gestión', copy:'Coordinamos especialidades, documentación y decisiones técnicas para que el proyecto avance con orden y claridad.' },
+  { num:'03', title:'Construcción', copy:'Ejecutamos y supervisamos cada etapa de obra, cuidando calidad, tiempos, costos y detalle constructivo.' },
+  { num:'04', title:'Interiorismo', copy:'Diseñamos ambientes desde la materialidad, iluminación, texturas, vegetación, mobiliario y composición.' }
+];
+
+const projects = [
+  {
+    slug:'bayobar', name:'Proyecto Bayobar', category:'Diseño de viviendas urbanas · Uso mixto', place:'Lima, Perú', date:'Marzo 2024',
+    area:'Terreno 90 m² · 80 m² por piso', levels:'4 pisos + azotea',
+    description:'Un proyecto de uso mixto que integra comercio, gastronomía y vivienda. El primer nivel alberga locales comerciales, el segundo un restobar y los dos últimos niveles departamentos, complementados por una azotea.',
+    images:['/images/image2.jpeg','/images/image3.jpeg','/images/image4.jpeg'], featured:true
+  },
+  {
+    slug:'gizzella', name:'Proyecto Gizzella', category:'Diseño de viviendas urbanas', place:'Santa Anita, Perú', date:'Enero 2025',
+    area:'Terreno 210 m² · 200 m² por piso', levels:'1 piso',
+    description:'Proyecto de diseño integral de un departamento desarrollado de acuerdo con las necesidades, gustos y estilo de vida del cliente, con una distribución funcional, cómoda y estética.',
+    images:['/images/image5.jpeg','/images/image6.jpeg','/images/image7.jpeg']
+  },
+  {
+    slug:'martinete-henry', name:'Proyecto Martinete', category:'Diseño de viviendas urbanas', place:'Cercado de Lima, Perú', date:'Agosto 2025',
+    area:'Terreno 30 m² · 45 m² por piso', levels:'1 piso',
+    description:'Proyecto de diseño integral de un departamento de un nivel, planteado para lograr espacios contemporáneos, funcionales y cómodos.',
+    images:['/images/image8.png','/images/image9.jpeg','/images/image10.jpeg','/images/image11.jpeg']
+  },
+  {
+    slug:'quinta', name:'Proyecto Quinta', category:'Diseño de viviendas urbanas', place:'Breña, Perú', date:'Junio 2025',
+    area:'Terreno 45 m² · 45 m² por piso', levels:'2 pisos',
+    description:'Diseño integral de una vivienda de dos pisos donde se optimizaron los espacios para lograr funcionalidad, comodidad e iluminación natural.',
+    images:['/images/image12.jpeg','/images/image13.jpeg']
+  },
+  {
+    slug:'martinete-social', name:'Proyecto Martinete · Zona social', category:'Diseño de viviendas urbanas', place:'Cercado de Lima, Perú', date:'Marzo 2026',
+    area:'Terreno 9 m² · 9 m² por piso', levels:'1 piso',
+    description:'Un espacio pensado para compartir, disfrutar y conectar con el entorno. La vegetación se integra con la zona de parrilla para crear un ambiente fresco, cálido y acogedor.',
+    images:['/images/image14.png','/images/image15.png'], featured:true
+  },
+  {
+    slug:'punto-peru', name:'Proyecto Punto Perú', category:'Diseño comercial', place:'Huachipa, Perú', date:'Enero 2025',
+    area:'Terreno 120 m² · 110 m² por piso', levels:'2 pisos',
+    description:'Proyecto de diseño integral desarrollado con una propuesta moderna, acabados elegantes y una integración armónica entre los diferentes ambientes.',
+    images:['/images/image16.jpeg','/images/image17.jpeg','/images/image18.jpeg']
+  },
+  {
+    slug:'tienda-naturista', name:'Proyecto Tienda Naturista', category:'Diseño comercial', place:'La Molina, Perú', date:'Abril 2026',
+    area:'Terreno 80 m² · 40 m² por piso', levels:'1 piso',
+    description:'Diseño y ejecución de una tienda comercial con exhibidoras de melamina personalizadas e iluminación LED estratégica para resaltar productos y mejorar la experiencia visual.',
+    images:['/images/image19.jpeg','/images/image20.jpeg','/images/image21.jpeg']
+  },
+  {
+    slug:'ice-tea', name:'Proyecto Ice Tea', category:'Diseño comercial', place:'San Isidro, Perú', date:'Enero 2024',
+    area:'Terreno 41 m² · 41 m² por piso', levels:'1 piso',
+    description:'Un espacio pensado para comer, compartir y pasar un buen momento. El diseño combina la calidez de la madera con la textura del microcemento para crear un ambiente contemporáneo y acogedor.',
+    images:['/images/image22.jpeg','/images/image23.jpeg','/images/image24.jpeg','/images/image25.jpeg'], featured:true
+  }
+];
+
+const projectsWithoutImages = [
+  {name:'Proyecto Salon Spa Lusso', place:'Santa Clara, Perú', date:'Abril 2026', detail:'12 m² · Diseño comercial', description:'El diseño busca optimizar la distribución de los puestos de atención, incorporando iluminación decorativa, vegetación y detalles en tonos neutros y dorados.'},
+  {name:'Proyecto Mercado Sol de Paraíso', place:'Ate, Perú', date:'Junio 2026', detail:'1060 m² · Remodelación comercial', description:'Remodelación orientada a mejorar la seguridad, funcionalidad y durabilidad de la infraestructura existente mediante la ejecución de los principales componentes de obra civil y estructura.'}
+];
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MERAKI Estudio de Arquitectura & Construcción. Arquitectura, construcción e interiorismo: de la idea a la obra, un solo equipo." />
+  <meta name="theme-color" content="#f3f1ed" />
+  <meta name="color-scheme" content="light" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MERAKI | Arquitectura & Construcción" />
+  <meta property="og:description" content="Arquitectura que imagina. Construcción que transforma." />
+  <meta property="og:image" content="/images/image2.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>MERAKI | Arquitectura & Construcción</title>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="logo-link" href="#inicio" aria-label="MERAKI — Inicio">
+        <img class="brand brand-dark" src="/logo-meraki-dark.png" alt="MERAKI" width="82" height="82" />
+        <img class="brand brand-light" src="/logo-meraki.png" alt="" aria-hidden="true" width="82" height="82" />
+      </a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#estudio">Estudio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#equipo">Nosotros</a><a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-cta" href="#contacto"><span>Hablemos</span><i>↗</i></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+      <div class="mobile-menu-inner shell">
+        <a href="#estudio">Estudio <span>01</span></a><a href="#servicios">Servicios <span>02</span></a><a href="#proyectos">Proyectos <span>03</span></a><a href="#equipo">Nosotros <span>04</span></a><a href="#contacto">Contacto <span>05</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-media-wrap" data-parallax><img class="hero-media" src="/images/image2.jpeg" alt="Proyecto Bayobar de MERAKI" fetchpriority="high" decoding="async" /></div>
+      <div class="hero-shade"></div>
+      <div class="shell hero-content">
+        <p class="kicker hero-kicker reveal">Arquitectura · Construcción · Interiorismo</p>
+        <h1 id="hero-title" class="reveal delay-1">Arquitectura que imagina.<br/><span>Construcción que transforma.</span></h1>
+        <div class="hero-bottom reveal delay-2"><p>Diseñamos, desarrollamos y construimos espacios pensados para durar.</p><a class="text-link light" href="#proyectos">Explorar proyectos <span>↘</span></a></div>
+      </div>
+      <a class="hero-cta reveal delay-3" href="#contacto">Quiero cotizar mi proyecto <span>→</span></a>
+      <div class="scroll-cue" aria-hidden="true"><span></span></div>
+    </section>
+
+    <section class="studio section" id="estudio">
+      <div class="shell studio-grid">
+        <div class="section-label reveal"><span>01</span> Meraki</div>
+        <div class="studio-title reveal"><h2>Diseñamos espacios.<br/>Construimos proyectos.<br/><em>Creamos valor.</em></h2></div>
+        <div class="studio-copy reveal">
+          <p>En Meraki Arquitectura & Construcción desarrollamos proyectos integrales combinando diseño, ingeniería y construcción para convertir ideas en espacios funcionales, estéticos y bien ejecutados.</p>
+          <p>Trabajamos cada proyecto de manera personalizada, entendiendo las necesidades del cliente y acompañándolo desde las primeras ideas hasta la ejecución y entrega.</p>
+        </div>
+      </div>
+      <div class="shell disciplines reveal"><span>Arquitectura</span><i>+</i><span>Ingeniería</span><i>+</i><span>Construcción</span><i>+</i><span>Interiorismo</span></div>
+    </section>
+
+    <section class="services section section-soft" id="servicios">
+      <div class="shell">
+        <div class="section-head reveal"><div class="section-label"><span>02</span> Servicios</div><h2>Un solo equipo.<br/><em>De la idea a la obra.</em></h2><p>Diseño, técnica y ejecución conectados en un mismo proceso para acompañar el proyecto desde las primeras ideas hasta la entrega.</p></div>
+        <div class="service-list">
+          {services.map(service => <article class="service-row reveal"><span class="service-num">{service.num}</span><h3>{service.title}</h3><p>{service.copy}</p><span class="service-arrow" aria-hidden="true">↗</span></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="projects section" id="proyectos">
+      <div class="shell projects-intro reveal"><div class="section-label"><span>03</span> Proyectos</div><h2>Espacios con identidad.<br/><em>Obras con propósito.</em></h2><p>Una selección de vivienda, interiorismo y arquitectura comercial desarrollada por MERAKI.</p></div>
+      <div class="project-filter shell reveal" role="group" aria-label="Filtrar proyectos">
+        <button class="filter-btn is-active" type="button" data-filter="all">Todos</button>
+        <button class="filter-btn" type="button" data-filter="vivienda">Vivienda</button>
+        <button class="filter-btn" type="button" data-filter="comercial">Comercial</button>
+      </div>
+      <div class="project-stack">
+        {projects.map((project, index) => {
+          const type = project.category.toLowerCase().includes('comercial') ? 'comercial' : 'vivienda';
+          return <article class:list={["project-block", project.featured && 'project-block--feature']} id={project.slug} data-project-type={type}>
+            <div class="shell project-heading reveal">
+              <div class="project-index">{String(index + 1).padStart(2,'0')}</div>
+              <div><p class="kicker">{project.category}</p><h3>{project.name}</h3></div>
+              <div class="project-data"><span>{project.place}</span><span>{project.date}</span><span>{project.area}</span><span>{project.levels}</span></div>
+              <p class="project-description">{project.description}</p>
+            </div>
+            <div class:list={["project-gallery", `gallery-${Math.min(project.images.length,4)}`]}>
+              {project.images.map((image, imageIndex) => <button class:list={["project-image", imageIndex === 0 && 'project-image--primary', 'reveal-image']} type="button" data-lightbox={image} data-caption={`${project.name} — ${project.place}`} aria-label={`Ampliar ${project.name}, vista ${imageIndex + 1}`}><img src={image} loading={index < 1 ? 'eager' : 'lazy'} decoding="async" alt={`${project.name} — vista ${imageIndex + 1}`} /></button>)}
+            </div>
+          </article>
+        })}
+      </div>
+      <div class="shell text-only-projects reveal">
+        <div><span>Otros proyectos documentados</span><p>El documento entregado no incluye imágenes para estos dos proyectos.</p></div>
+        {projectsWithoutImages.map(project => <article><strong>{project.name}</strong><span>{project.place} · {project.date}</span><span>{project.detail}</span><p>{project.description}</p></article>)}
+      </div>
+    </section>
+
+    <section class="process section section-dark" id="proceso">
+      <div class="shell process-grid">
+        <div class="section-head dark reveal"><div class="section-label"><span>04</span> Proceso</div><h2>Del concepto<br/>a la realidad.</h2></div>
+        <ol class="process-list">
+          <li class="reveal"><span>01</span><div><strong>Escuchamos</strong><p>Entendemos las necesidades, prioridades y contexto del proyecto.</p></div></li>
+          <li class="reveal"><span>02</span><div><strong>Diseñamos</strong><p>Convertimos la idea en una propuesta arquitectónica funcional, estética y coherente.</p></div></li>
+          <li class="reveal"><span>03</span><div><strong>Desarrollamos</strong><p>Integramos planificación, ingeniería, materialidad y documentación técnica.</p></div></li>
+          <li class="reveal"><span>04</span><div><strong>Construimos</strong><p>Acompañamos la ejecución y supervisión hasta convertir el diseño en obra.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="team section" id="equipo">
+      <div class="shell team-head reveal"><div class="section-label"><span>05</span> Estudio</div><h2>Dos miradas.<br/><em>Una misma visión.</em></h2></div>
+      <div class="shell team-grid">
+        <article class="person reveal"><div class="person-photo"><img src="/images/image26.jpg" loading="lazy" decoding="async" alt="Gino Calderón" /></div><div class="person-copy"><p class="kicker">Arquitecto Constructor & Fundador</p><h3>Gino Calderón</h3><p>Integra diseño y construcción como un solo proceso y participa desde la concepción de la idea y el desarrollo arquitectónico hasta la planificación, ejecución y supervisión de obra.</p></div></article>
+        <article class="person reveal delay-1"><div class="person-photo"><img src="/images/image27.jpg" loading="lazy" decoding="async" alt="Angielina Bazán" /></div><div class="person-copy"><p class="kicker">Arquitecta & Fundadora</p><h3>Angielina Bazán</h3><p>Su trabajo está ligado al diseño, la creatividad y la transformación de los espacios mediante materialidad, iluminación, texturas, vegetación, mobiliario y composición.</p></div></article>
+      </div>
+    </section>
+
+    <section class="contact section section-soft" id="contacto">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal"><div class="section-label"><span>06</span> Contacto</div><h2>Hablemos de<br/><em>tu proyecto.</em></h2><p>Cuéntanos qué tienes en mente. Organizaremos la información y continuaremos la conversación directamente por WhatsApp.</p><a class="contact-direct" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer">WhatsApp <strong>{whatsappDisplay}</strong> <span>↗</span></a></div>
+        <form class="contact-form reveal delay-1" data-whatsapp-form>
+          <label><span>Nombre</span><input name="nombre" autocomplete="name" required placeholder="Tu nombre completo" /></label>
+          <label><span>WhatsApp</span><input name="telefono" autocomplete="tel" inputmode="tel" required placeholder="Número de contacto" /></label>
+          <label><span>Tipo de proyecto</span><select name="tipo" required><option value="">Seleccionar</option><option>Diseño arquitectónico</option><option>Construcción</option><option>Interiorismo</option><option>Supervisión / Gestión</option><option>Otro</option></select></label>
+          <label><span>Ubicación</span><input name="ubicacion" autocomplete="address-level2" placeholder="Distrito / ciudad" /></label>
+          <label class="full"><span>Cuéntanos brevemente</span><textarea name="mensaje" rows="4" placeholder="Tipo de espacio, área aproximada, etapa actual o cualquier detalle importante"></textarea></label>
+          <label class="privacy-check full"><input type="checkbox" name="privacidad" required /><span>Acepto que mis datos sean usados para responder esta solicitud según la <a href="/privacidad">Política de Privacidad</a>.</span></label>
+          <button class="submit-btn full" type="submit"><span>Enviar por WhatsApp</span><i>↗</i></button>
+          <p class="form-note full">No realizamos pagos ni reservas desde este formulario. La conversación continúa directamente en WhatsApp.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-main">
+      <div class="footer-brand"><img src="/logo-meraki.png" alt="MERAKI" width="84" height="84"/><p>Arquitectura, construcción e interiorismo.<br/>De la idea a la obra, un solo equipo.</p></div>
+      <div class="footer-col"><span>Navegación</span><a href="#estudio">Estudio</a><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#equipo">Nosotros</a><a href="#contacto">Contacto</a></div>
+      <div class="footer-col"><span>Servicios</span><a href="#servicios">Diseño arquitectónico</a><a href="#servicios">Construcción</a><a href="#servicios">Interiorismo</a><a href="#servicios">Gestión</a></div>
+      <div class="footer-col"><span>Contacto</span><a href={`https://wa.me/${whatsapp}`}>{whatsappDisplay}</a><p>Lima, Perú</p><a href="/privacidad">Privacidad</a><a href="/terminos">Términos</a></div>
+    </div>
+    <div class="shell footer-bottom"><span>© 2026 MERAKI Arquitectura & Construcción</span><button type="button" data-back-top>Volver arriba ↑</button></div>
+  </footer>
+
+  <a class="whatsapp-fab" href={`https://wa.me/${whatsapp}`} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.7 11.7 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.3-6.1-3.5-8.4Zm-8.4 18.2h-.1a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.5 4.7Zm5.4-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.6l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.5.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.9.3 1.7.2 2.3.1.7-.1 1.7-.7 1.9-1.3.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z" fill="currentColor"/></svg></a>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Vista ampliada del proyecto"><button class="lightbox-close" type="button" data-lightbox-close aria-label="Cerrar">×</button><figure><img data-lightbox-image alt=""/><figcaption data-lightbox-caption></figcaption></figure></dialog>
+
+  <script is:inline define:vars={{ whatsapp }}>
+    const header = document.querySelector('[data-header]');
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+    const mobileLinks = mobileMenu?.querySelectorAll('a') || [];
+    const setHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+    setHeader(); window.addEventListener('scroll', setHeader, { passive:true });
+    menuToggle?.addEventListener('click', () => { const open = document.body.classList.toggle('menu-open'); menuToggle.setAttribute('aria-expanded', String(open)); menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú'); });
+    mobileLinks.forEach(link => link.addEventListener('click', () => { document.body.classList.remove('menu-open'); menuToggle?.setAttribute('aria-expanded','false'); }));
+
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if(entry.isIntersecting){ entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold:.1, rootMargin:'0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal, .reveal-image').forEach(el => observer.observe(el));
+
+    const parallax = document.querySelector('[data-parallax]');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateParallax = () => { if(!parallax || reduced.matches) return; parallax.style.transform = `translate3d(0, ${Math.min(window.scrollY*.1,80)}px, 0) scale(1.045)`; };
+    updateParallax(); window.addEventListener('scroll', updateParallax, { passive:true });
+
+    document.querySelectorAll('[data-filter]').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('is-active')); btn.classList.add('is-active');
+      const filter = btn.dataset.filter; document.querySelectorAll('[data-project-type]').forEach(project => project.hidden = filter !== 'all' && project.dataset.projectType !== filter);
+    }));
+
+    const dialog = document.querySelector('[data-lightbox-dialog]'); const dialogImage = document.querySelector('[data-lightbox-image]'); const dialogCaption = document.querySelector('[data-lightbox-caption]');
+    document.querySelectorAll('[data-lightbox]').forEach(btn => btn.addEventListener('click', () => { if(!dialog || !dialogImage) return; dialogImage.src = btn.dataset.lightbox; dialogImage.alt = btn.dataset.caption || 'Proyecto MERAKI'; dialogCaption.textContent = btn.dataset.caption || ''; dialog.showModal(); }));
+    document.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog?.close());
+    dialog?.addEventListener('click', e => { if(e.target === dialog) dialog.close(); });
+
+    document.querySelector('[data-whatsapp-form]')?.addEventListener('submit', event => {
+      event.preventDefault(); const data = new FormData(event.currentTarget);
+      const message = ['Hola MERAKI, quisiera cotizar un proyecto.','',`Nombre: ${data.get('nombre') || ''}`,`WhatsApp: ${data.get('telefono') || ''}`,`Tipo de proyecto: ${data.get('tipo') || ''}`,`Ubicación: ${data.get('ubicacion') || ''}`,`Detalle: ${data.get('mensaje') || 'Por conversar'}`].join('\n');
+      window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    });
+    document.querySelector('[data-back-top]')?.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>
