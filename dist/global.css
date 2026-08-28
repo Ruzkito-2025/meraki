@@ -236,3 +236,51 @@ p{line-height:1.65}
 .inner-hero h1 em{color:#6f6f6f}
 .inner-hero-grid>p,.legal-lead,.legal-main section p,.legal-note,.legal-footer,.not-found>main>p:not(.kicker){color:#5b5b5b}
 .project-description>p{color:#111}
+
+
+/* MOTION / SHORT VIDEOS */
+.motion-section{background:#fff;border-top:1px solid var(--line)}
+.motion-head{display:grid;grid-template-columns:170px 1.05fr .72fr;gap:clamp(28px,5vw,90px);align-items:end;margin-bottom:58px}
+.motion-head h2{font-size:clamp(3rem,5.4vw,6.4rem)}
+.motion-head>p{color:#5b5b5b;max-width:440px;padding-bottom:6px}
+.motion-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.motion-card{margin:0;position:relative;overflow:hidden;background:#111;min-height:0}
+.motion-card-a{grid-column:span 7;aspect-ratio:16/9}
+.motion-card-b{grid-column:span 5;aspect-ratio:16/9}
+.motion-card-c,.motion-card-d{grid-column:span 3;aspect-ratio:9/14}
+.motion-card video{width:100%;height:100%;display:block;object-fit:cover;transition:transform .8s var(--ease);background:#111}
+.motion-card:hover video{transform:scale(1.018)}
+.motion-card::after{content:"";position:absolute;inset:auto 0 0;height:32%;background:linear-gradient(transparent,rgba(0,0,0,.55));pointer-events:none}
+.motion-card figcaption{position:absolute;left:18px;right:18px;bottom:15px;z-index:2;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.motion-card figcaption span{opacity:.68}
+.motion-card figcaption strong{font-weight:500}
+.motion-note{grid-column:span 6;background:#111;color:#fff;padding:clamp(34px,4.5vw,68px);display:flex;flex-direction:column;justify-content:space-between;min-height:100%}
+.motion-note .kicker{color:#aaa}
+.motion-note>p{font-size:clamp(1.8rem,3vw,3.4rem);line-height:1.06;letter-spacing:-.04em;max-width:620px;margin:50px 0}
+.motion-note .text-link{margin-top:auto}
+@media(max-width:900px){.motion-head{grid-template-columns:1fr;gap:24px}.motion-grid{grid-template-columns:1fr 1fr}.motion-card-a,.motion-card-b{grid-column:span 2}.motion-card-c,.motion-card-d{grid-column:span 1;aspect-ratio:9/14}.motion-note{grid-column:span 2;min-height:420px}}
+@media(max-width:560px){.motion-grid{display:grid;grid-template-columns:1fr}.motion-card-a,.motion-card-b,.motion-card-c,.motion-card-d,.motion-note{grid-column:1}.motion-card-a,.motion-card-b{aspect-ratio:16/10}.motion-card-c,.motion-card-d{aspect-ratio:4/5}.motion-note{min-height:380px;padding:30px 24px}.motion-note>p{margin:38px 0}}
+@media(prefers-reduced-motion:reduce){.motion-card video{transition:none}.motion-card:hover video{transform:none}}
+
+/* Home hero editorial update */
+.hero-editorial{align-items:center;min-height:100svh}
+.hero-content-editorial{padding:150px 0 110px;z-index:2;position:relative}
+.hero-editorial .hero-kicker{margin-bottom:26px;font-size:12px;letter-spacing:.28em;color:rgba(255,255,255,.9)}
+.hero-editorial h1{max-width:740px;font-size:clamp(4.3rem,9vw,10rem);line-height:.9;font-weight:300;text-transform:uppercase;letter-spacing:-.06em}
+.hero-editorial h1 span{color:#fff}
+.hero-copy{max-width:450px;margin-top:28px;font-size:clamp(1rem,1.4vw,1.25rem);line-height:1.6;color:rgba(255,255,255,.86)}
+.hero-main-link{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:330px;margin-top:38px;padding:20px 28px;border:1px solid rgba(255,255,255,.42);background:rgba(0,0,0,.22);color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);transition:.35s var(--ease)}
+.hero-main-link:hover{background:#fff;color:#111;border-color:#fff}
+.hero-main-link .lucide{transition:transform .3s var(--ease)}
+.hero-main-link:hover .lucide{transform:translateX(5px)}
+.hero-editorial .hero-shade{background:linear-gradient(90deg,rgba(5,8,12,.68) 0%,rgba(5,8,12,.28) 38%,rgba(5,8,12,.08) 74%),linear-gradient(0deg,rgba(5,8,12,.48),transparent 44%)}
+.hero-editorial .scroll-cue{left:50%;bottom:28px}
+@media(max-width:900px){
+  .hero-content-editorial{padding:140px 0 92px}
+  .hero-editorial h1{font-size:16vw;max-width:92vw}
+  .hero-main-link{min-width:unset;width:min(100%,340px)}
+}
+@media(max-width:560px){
+  .hero-copy{max-width:320px}
+  .hero-main-link{padding:18px 20px;font-size:11px}
+}

@@ -4,12 +4,17 @@ import { projects, services } from '../data/site';
 import Icon from '../components/Icon.astro';
 const featured = projects.filter(p=>p.featured).slice(0,3);
 ---
-<BaseLayout>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-media-wrap"><img class="hero-media" src="/images/image2.jpeg" alt="Proyecto Bayobar de MERAKI" fetchpriority="high" decoding="async" /></div>
+<BaseLayout image="/images/hero-meraki-dusk.png">
+  <section class="hero hero-editorial" aria-labelledby="hero-title">
+    <div class="hero-media-wrap"><img class="hero-media" src="/images/hero-meraki-dusk.png" alt="Casa moderna de MERAKI al atardecer" fetchpriority="high" decoding="async" /></div>
     <div class="hero-shade"></div>
-    <div class="shell hero-content"><p class="kicker hero-kicker reveal">Arquitectura · Construcción · Interiorismo</p><h1 id="hero-title" class="reveal delay-1">Arquitectura que imagina.<br/><span>Construcción que transforma.</span></h1><div class="hero-bottom reveal delay-2"><p>Diseñamos, desarrollamos y construimos espacios pensados para durar.</p><a class="text-link light" href="/proyectos">Explorar proyectos <Icon name="arrow-down-right" size={17}/></a></div></div>
-    <a class="hero-cta reveal delay-3" href="/contacto">Quiero cotizar mi proyecto <Icon name="arrow-right" size={18}/></a>
+    <div class="shell hero-content hero-content-editorial">
+      <p class="kicker hero-kicker reveal">Diseñamos espacios</p>
+      <h1 id="hero-title" class="reveal delay-1">Creamos<br/><span>Experiencias</span></h1>
+      <p class="hero-copy reveal delay-2">Transformamos ideas en arquitectura funcional, estética y atemporal.</p>
+      <a class="hero-main-link reveal delay-3" href="/proyectos">Conoce nuestros proyectos <Icon name="arrow-right" size={18}/></a>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
   </section>
 
   <section class="studio section">
@@ -29,8 +34,47 @@ const featured = projects.filter(p=>p.featured).slice(0,3);
     <div class="shell"><div class="section-head reveal"><div class="section-label"><span>02</span> Servicios</div><h2>Un solo equipo.<br/><em>De la idea a la obra.</em></h2><p>Una mirada integral para diseñar, desarrollar y ejecutar cada proyecto.</p></div><div class="service-list">{services.map(service => <article class="service-row reveal"><span class="service-num">{service.num}</span><span class="service-icon" aria-hidden="true"><Icon name={service.icon} size={24}/></span><h3>{service.title}</h3><p>{service.copy}</p></article>)}</div><p class="section-action"><a class="text-link" href="/servicios">Ver todos los servicios <Icon name="arrow-right" size={16}/></a></p></div>
   </section>
 
+  <section class="motion-section section" aria-labelledby="motion-title">
+    <div class="shell motion-head reveal">
+      <div class="section-label"><span>03</span> En obra</div>
+      <h2 id="motion-title">Del diseño a la ejecución.</h2>
+      <p>Diseñamos con criterio y acompañamos cada etapa hasta convertir las ideas en espacios reales.</p>
+    </div>
+    <div class="shell motion-grid">
+      <figure class="motion-card motion-card-a reveal">
+        <video autoplay muted loop playsinline preload="metadata" poster="/video-posters/meraki-interior-final.jpg" aria-label="Detalle final de interior ejecutado por MERAKI">
+          <source src="/videos/meraki-interior-final.mp4" type="video/mp4" />
+        </video>
+        <figcaption><span>01</span><strong>Detalle final</strong></figcaption>
+      </figure>
+      <figure class="motion-card motion-card-b reveal delay-1">
+        <video autoplay muted loop playsinline preload="metadata" poster="/video-posters/meraki-lusso-final.jpg" aria-label="Proyecto comercial MERAKI LUSSO terminado">
+          <source src="/videos/meraki-lusso-final.mp4" type="video/mp4" />
+        </video>
+        <figcaption><span>02</span><strong>Espacio terminado</strong></figcaption>
+      </figure>
+      <figure class="motion-card motion-card-c reveal">
+        <video autoplay muted loop playsinline preload="metadata" poster="/video-posters/meraki-obra-proceso.jpg" aria-label="Proceso de obra de MERAKI">
+          <source src="/videos/meraki-obra-proceso.mp4" type="video/mp4" />
+        </video>
+        <figcaption><span>03</span><strong>Proceso</strong></figcaption>
+      </figure>
+      <figure class="motion-card motion-card-d reveal delay-1">
+        <video autoplay muted loop playsinline preload="metadata" poster="/video-posters/meraki-equipo-obra.jpg" aria-label="Equipo MERAKI trabajando en obra">
+          <source src="/videos/meraki-equipo-obra.mp4" type="video/mp4" />
+        </video>
+        <figcaption><span>04</span><strong>Ejecución</strong></figcaption>
+      </figure>
+      <div class="motion-note reveal delay-2">
+        <span class="kicker">MERAKI · Arquitectura & Construcción</span>
+        <p>La arquitectura no termina en el plano. Se construye, se supervisa y se cuida hasta el último detalle.</p>
+        <a class="text-link light" href="/servicios">Conoce cómo trabajamos <Icon name="arrow-right" size={16}/></a>
+      </div>
+    </div>
+  </section>
+
   <section class="projects section">
-    <div class="shell projects-intro reveal"><div class="section-label"><span>03</span> Proyectos</div><h2>Espacios con identidad.<br/><em>Obras con propósito.</em></h2><p>Una selección de proyectos residenciales y comerciales desarrollados por MERAKI.</p></div>
+    <div class="shell projects-intro reveal"><div class="section-label"><span>04</span> Proyectos</div><h2>Espacios con identidad.<br/><em>Obras con propósito.</em></h2><p>Una selección de proyectos residenciales y comerciales desarrollados por MERAKI.</p></div>
     <div class="shell project-grid home-project-grid">{featured.map(project => <a class="project-card reveal" href={`/proyectos/${project.slug}`}><figure><img src={project.images[0]} loading="lazy" decoding="async" alt={project.name}/></figure><div class="project-card-copy"><span>{project.category}</span><h3>{project.name}</h3><p>{project.place}</p></div></a>)}</div>
     <div class="shell section-action"><a class="text-link" href="/proyectos">Ver todos los proyectos <Icon name="arrow-right" size={16}/></a></div>
   </section>

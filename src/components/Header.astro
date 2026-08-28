@@ -4,8 +4,9 @@ const path = Astro.url.pathname;
 const nav = [
   ['/','Inicio'],['/estudio','Estudio'],['/servicios','Servicios'],['/proyectos','Proyectos'],['/contacto','Contacto']
 ];
+const headerClass = path === '/' ? 'site-header' : 'site-header is-scrolled';
 ---
-<header class="site-header is-scrolled" data-header>
+<header class={headerClass} data-header>
   <div class="shell nav-wrap">
     <a class="logo-link" href="/" aria-label="MERAKI — Inicio"><img class="brand brand-dark" src="/logo-meraki-dark.png" alt="MERAKI" width="82" height="82" /><img class="brand brand-light" src="/logo-meraki.png" alt="" aria-hidden="true" width="82" height="82" /></a>
     <nav class="desktop-nav" aria-label="Navegación principal">{nav.map(([href,label]) => <a href={href} class:list={{active:path===href}}>{label}</a>)}</nav>
