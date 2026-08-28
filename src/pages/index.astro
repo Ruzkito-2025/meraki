@@ -16,6 +16,15 @@ const featured = projects.filter(p=>p.featured).slice(0,3);
     <div class="shell studio-grid"><div class="section-label reveal"><span>01</span> Meraki</div><div class="studio-title reveal"><h2>Diseñamos espacios.<br/>Construimos proyectos.<br/><em>Creamos valor.</em></h2></div><div class="studio-copy reveal"><p>Desarrollamos proyectos integrales combinando diseño, ingeniería y construcción para convertir ideas en espacios funcionales, estéticos y bien ejecutados.</p><a class="text-link" href="/estudio">Conoce el estudio <Icon name="arrow-right" size={16}/></a></div></div>
   </section>
 
+  <section class="stats-band">
+    <div class="shell stats-grid">
+      <div class="stat-item reveal"><strong>1.8M</strong><span>Comunidad educativa</span></div>
+      <div class="stat-item reveal delay-1"><strong>+85</strong><span>Proyectos con método</span></div>
+      <div class="stat-item reveal delay-2"><strong>+29</strong><span>Ciudades atendidas</span></div>
+      <div class="stat-item reveal delay-3"><strong>+6</strong><span>Años online</span></div>
+    </div>
+  </section>
+
   <section class="services section section-soft">
     <div class="shell"><div class="section-head reveal"><div class="section-label"><span>02</span> Servicios</div><h2>Un solo equipo.<br/><em>De la idea a la obra.</em></h2><p>Una mirada integral para diseñar, desarrollar y ejecutar cada proyecto.</p></div><div class="service-list">{services.map(service => <article class="service-row reveal"><span class="service-num">{service.num}</span><span class="service-icon" aria-hidden="true"><Icon name={service.icon} size={24}/></span><h3>{service.title}</h3><p>{service.copy}</p></article>)}</div><p class="section-action"><a class="text-link" href="/servicios">Ver todos los servicios <Icon name="arrow-right" size={16}/></a></p></div>
   </section>
