@@ -13,5 +13,5 @@ const headerClass = path === '/' ? 'site-header' : 'site-header is-scrolled';
     <a class="nav-cta" href="/contacto"><span>Hablemos</span><Icon name="arrow-up-right" size={17}/></a>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><Icon class="menu-open-icon" name="menu" size={27}/><Icon class="menu-close-icon" name="x" size={27}/></button>
   </div>
-  <div class="mobile-menu" id="mobile-menu" data-mobile-menu><div class="mobile-menu-inner shell">{nav.map(([href,label],i) => <a href={href}>{label} <span>0{i+1}</span></a>)}</div></div>
 </header>
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true"><div class="mobile-menu-inner shell">{nav.map(([href,label],i) => <a href={href}>{label} <span>0{i+1}</span></a>)}</div></div>

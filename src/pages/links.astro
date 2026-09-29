@@ -87,33 +87,12 @@ const whatsappMessage = encodeURIComponent('Hola MERAKI, llegué a través de su
         padding: 10px 10px 24px;
       }
       .brand-logo {
-        width: 88px;
-        height: 88px;
+        display: block;
+        width: 108px;
+        height: auto;
         object-fit: contain;
-        margin: 0 auto 16px;
+        margin: 0 auto 18px;
       }
-      .brand-name-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-      }
-      .brand-name {
-        font-size: clamp(1.8rem, 7vw, 2.25rem);
-        font-weight: 500;
-        letter-spacing: .22em;
-        margin-left: .22em;
-      }
-      .verified {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: var(--ink);
-        color: #fff;
-        display: grid;
-        place-items: center;
-      }
-      .verified svg { width: 10px; height: 10px; stroke-width: 2.5; }
       .brand-meta {
         margin-top: 10px;
         color: var(--muted);
@@ -127,6 +106,18 @@ const whatsappMessage = encodeURIComponent('Hola MERAKI, llegué a través de su
         font-size: .9rem;
         line-height: 1.5;
         max-width: 360px;
+      }
+
+      .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
 
       .links-list {
@@ -236,7 +227,7 @@ const whatsappMessage = encodeURIComponent('Hola MERAKI, llegué a través de su
       @media (max-width: 420px) {
         .links-page { padding-left: 14px; padding-right: 14px; }
         .brand-block { padding-bottom: 20px; }
-        .brand-logo { width: 82px; height: 82px; margin-bottom: 13px; }
+        .brand-logo { width: 98px; margin-bottom: 15px; }
         .link-card { min-height: 72px; grid-template-columns: 46px minmax(0, 1fr) 36px; gap: 12px; padding: 10px; }
         .link-icon { width: 46px; height: 46px; }
         .link-arrow { width: 36px; height: 36px; }
@@ -259,11 +250,8 @@ const whatsappMessage = encodeURIComponent('Hola MERAKI, llegué a través de su
         </header>
 
         <section class="brand-block" aria-labelledby="links-title">
-          <img class="brand-logo" src="/logo-meraki.png" alt="MERAKI" width="88" height="88" />
-          <div class="brand-name-row">
-            <h1 class="brand-name" id="links-title">MERAKI</h1>
-            <span class="verified" aria-label="Cuenta verificada"><Icon name="check" size={10} strokeWidth={2.5} /></span>
-          </div>
+          <img class="brand-logo" src="/logo-meraki-dark.png" alt="MERAKI" width="108" height="116" />
+          <h1 id="links-title" class="sr-only">MERAKI</h1>
           <p class="brand-meta">Arquitectura & Construcción</p>
           <p class="brand-tagline">De la idea a la obra, un solo equipo.</p>
         </section>
