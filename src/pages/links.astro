@@ -1,227 +1,372 @@
 ---
-const whatsapp = '51973550253';
-const whatsappMessage = encodeURIComponent('Hola MERAKI, quisiera información sobre sus servicios de arquitectura y construcción.');
-const links = [
-  { label: 'Visitar sitio web', href: '/', icon: 'globe', external: false },
-  { label: 'Conocer nuestros proyectos', href: '/proyectos', icon: 'images', external: false },
-  { label: 'Ver nuestros servicios', href: '/servicios', icon: 'layers', external: false },
-  { label: 'Conversemos por WhatsApp', href: `https://wa.me/${whatsapp}?text=${whatsappMessage}`, icon: 'message-circle', external: true, featured: true },
-  { label: 'Conocer el estudio', href: '/estudio', icon: 'building-2', external: false },
-  { label: 'Contacto', href: '/contacto', icon: 'mail', external: false },
-];
+import { whatsapp, whatsappDisplay } from '../data/site';
+import Icon from '../components/Icon.astro';
+
+const shareUrl = Astro.site ? new URL('/links', Astro.site).href : '/links';
+const whatsappMessage = encodeURIComponent('Hola MERAKI, llegué a través de su enlace y quisiera conocer más sobre sus proyectos.');
 ---
+
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f2f0eb" />
-  <meta name="description" content="MERAKI — Arquitectura & Construcción. Conoce nuestros proyectos, servicios y formas de contacto." />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="MERAKI | Arquitectura & Construcción" />
-  <meta property="og:description" content="Arquitectura, construcción e interiorismo. De la idea a la obra, un solo equipo." />
-  <meta property="og:image" content="/images/image2.jpeg" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <title>MERAKI | Links</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f3f1ed" />
+    <meta name="description" content="MERAKI · Arquitectura & Construcción. De la idea a la obra, un solo equipo." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MERAKI · Arquitectura & Construcción" />
+    <meta property="og:description" content="De la idea a la obra, un solo equipo." />
+    <meta property="og:image" content="/logo-meraki.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>MERAKI · Links</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-    :root {
-      --paper: #f2f0eb;
-      --ink: #11110f;
-      --muted: #686762;
-      --line: rgba(17,17,15,.12);
-      --white: #fff;
-      --ease: cubic-bezier(.22,1,.36,1);
-    }
-    * { box-sizing: border-box; }
-    html { min-height: 100%; background: var(--paper); }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.8), transparent 34rem),
-        var(--paper);
-      color: var(--ink);
-      font-family: Inter, "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    .page {
-      width: min(100%, 620px);
-      margin: 0 auto;
-      padding: 42px 22px 28px;
-    }
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      min-height: 38px;
-    }
-    .share {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: rgba(255,255,255,.54);
-      color: var(--ink);
-      cursor: pointer;
-      transition: transform .25s var(--ease), background .25s ease;
-    }
-    .share:hover { transform: translateY(-2px); background: var(--white); }
-    .profile { text-align: center; padding: 18px 0 30px; }
-    .logo-wrap {
-      width: 104px;
-      height: 104px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      background: var(--ink);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      box-shadow: 0 18px 45px rgba(17,17,15,.12);
-    }
-    .logo-wrap img {
-      width: 68px;
-      height: 68px;
-      object-fit: contain;
-      filter: invert(1);
-    }
-    .profile h1 {
-      margin: 0;
-      font-size: clamp(2rem, 7vw, 2.75rem);
-      font-weight: 400;
-      letter-spacing: -.06em;
-      line-height: .95;
-    }
-    .verified {
-      display: inline-grid;
-      place-items: center;
-      width: 17px;
-      height: 17px;
-      margin-left: 5px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: #fff;
-      font-size: 10px;
-      vertical-align: 4px;
-    }
-    .profile p {
-      max-width: 390px;
-      margin: 13px auto 0;
-      color: var(--muted);
-      font-size: .88rem;
-      line-height: 1.6;
-    }
-    .links { display: grid; gap: 12px; }
-    .link {
-      position: relative;
-      min-height: 64px;
-      display: grid;
-      grid-template-columns: 44px 1fr 44px;
-      align-items: center;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.7);
-      box-shadow: 0 7px 24px rgba(17,17,15,.035);
-      transition: transform .3s var(--ease), box-shadow .3s ease, background .3s ease;
-    }
-    .link:hover { transform: translateY(-3px); background: #fff; box-shadow: 0 14px 30px rgba(17,17,15,.08); }
-    .link-icon, .link-arrow {
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-    }
-    .link-icon { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 11px; }
-    .link-label { text-align: center; font-size: .83rem; font-weight: 500; letter-spacing: -.01em; }
-    .link-arrow { opacity: .42; }
-    .link.featured {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
-      box-shadow: 0 16px 35px rgba(17,17,15,.18);
-    }
-    .link.featured:hover { background: #242421; }
-    .link.featured .link-icon { border-color: rgba(255,255,255,.22); }
-    .link.featured .link-arrow { opacity: .7; }
-    .footer { text-align: center; padding: 34px 0 8px; color: #8a8882; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 22px;
-      transform: translate(-50%, 20px);
-      padding: 10px 15px;
-      border-radius: 999px;
-      background: var(--ink);
-      color: #fff;
-      font-size: .72rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .25s ease, transform .25s var(--ease);
-    }
-    .toast.show { opacity: 1; transform: translate(-50%, 0); }
-    @media (max-width: 480px) {
-      .page { padding: 24px 16px 22px; }
-      .profile { padding-top: 12px; padding-bottom: 26px; }
-      .logo-wrap { width: 92px; height: 92px; }
-      .logo-wrap img { width: 61px; height: 61px; }
-      .link { min-height: 61px; border-radius: 14px; grid-template-columns: 40px 1fr 40px; }
-      .link-icon { width: 36px; height: 36px; border-radius: 10px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <div class="topbar">
-      <button class="share" id="share" aria-label="Compartir MERAKI" title="Compartir">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-      </button>
-    </div>
+      :root {
+        --ink: #11110f;
+        --muted: #77736d;
+        --paper: #f3f1ed;
+        --card: rgba(255,255,255,.74);
+        --card-border: rgba(17,17,15,.10);
+        --shadow: 0 12px 30px rgba(17,17,15,.055);
+        --ease: cubic-bezier(.22,1,.36,1);
+      }
 
-    <section class="profile" aria-label="Perfil de MERAKI">
-      <div class="logo-wrap"><img src="/logo-meraki-dark.png" alt="MERAKI" /></div>
-      <h1>MERAKI<span class="verified" aria-label="Perfil oficial">✓</span></h1>
-      <p>Arquitectura & Construcción<br />De la idea a la obra, un solo equipo.</p>
-    </section>
+      * { box-sizing: border-box; }
+      html { min-height: 100%; background: var(--paper); }
+      body {
+        min-height: 100dvh;
+        margin: 0;
+        background:
+          radial-gradient(circle at 50% -10%, rgba(255,255,255,.9), transparent 42%),
+          var(--paper);
+        color: var(--ink);
+        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      .links-page {
+        min-height: 100dvh;
+        padding: max(22px, env(safe-area-inset-top)) 18px max(26px, env(safe-area-inset-bottom));
+        display: flex;
+        justify-content: center;
+      }
+      .links-shell {
+        width: min(100%, 520px);
+        min-height: calc(100dvh - max(48px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .links-top {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        min-height: 48px;
+      }
+      .share-button {
+        width: 46px;
+        height: 46px;
+        border: 1px solid var(--card-border);
+        background: rgba(255,255,255,.78);
+        color: var(--ink);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        transition: transform .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+      }
+      .share-button:hover { transform: translateY(-2px); background: #fff; border-color: rgba(17,17,15,.18); }
+      .share-button:focus-visible, .link-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-    <nav class="links" aria-label="Enlaces de MERAKI">
-      {links.map((link) => (
-        <a class:list={['link', { featured: link.featured }]} href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
-          <span class="link-icon" aria-hidden="true"><i data-lucide={link.icon}></i></span>
-          <span class="link-label">{link.label}</span>
-          <span class="link-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
-        </a>
-      ))}
-    </nav>
+      .brand-block {
+        text-align: center;
+        padding: 10px 10px 24px;
+      }
+      .brand-logo {
+        width: 88px;
+        height: 88px;
+        object-fit: contain;
+        margin: 0 auto 16px;
+      }
+      .brand-name-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+      .brand-name {
+        font-size: clamp(1.8rem, 7vw, 2.25rem);
+        font-weight: 500;
+        letter-spacing: .22em;
+        margin-left: .22em;
+      }
+      .verified {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        display: grid;
+        place-items: center;
+      }
+      .verified svg { width: 10px; height: 10px; stroke-width: 2.5; }
+      .brand-meta {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: .77rem;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+      .brand-tagline {
+        margin: 9px auto 0;
+        color: #64615c;
+        font-size: .9rem;
+        line-height: 1.5;
+        max-width: 360px;
+      }
 
-    <footer class="footer">MERAKI · Arquitectura & Construcción</footer>
-  </main>
-  <div class="toast" id="toast" role="status" aria-live="polite">Enlace copiado</div>
+      .links-list {
+        display: grid;
+        gap: 12px;
+      }
+      .link-card {
+        min-height: 76px;
+        border: 1px solid var(--card-border);
+        border-radius: 19px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        display: grid;
+        grid-template-columns: 50px minmax(0, 1fr) 38px;
+        align-items: center;
+        gap: 14px;
+        padding: 11px 12px 11px 11px;
+        transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+      }
+      .link-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 34px rgba(17,17,15,.09);
+        background: rgba(255,255,255,.92);
+        border-color: rgba(17,17,15,.15);
+      }
+      .link-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #ebe8e2;
+        border: 1px solid rgba(17,17,15,.07);
+        display: grid;
+        place-items: center;
+      }
+      .link-copy { min-width: 0; }
+      .link-title {
+        display: block;
+        font-size: .97rem;
+        line-height: 1.2;
+        font-weight: 500;
+        letter-spacing: -.01em;
+      }
+      .link-subtitle {
+        display: block;
+        margin-top: 5px;
+        font-size: .76rem;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+      .link-arrow {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #efede8;
+        display: grid;
+        place-items: center;
+        transition: transform .35s var(--ease), background .35s var(--ease);
+      }
+      .link-card:hover .link-arrow { transform: translateX(2px); background: #e6e2db; }
 
-  <script>
-    const renderIcons = () => window.lucide?.createIcons({ attrs: { 'stroke-width': '1.6' } });
-    const share = document.querySelector('#share');
-    const toast = document.querySelector('#toast');
-    const showToast = () => {
-      toast?.classList.add('show');
-      window.setTimeout(() => toast?.classList.remove('show'), 1800);
-    };
-    share?.addEventListener('click', async () => {
-      const data = { title: 'MERAKI | Arquitectura & Construcción', text: 'Conoce MERAKI: arquitectura, construcción e interiorismo.', url: window.location.href };
-      try {
-        if (navigator.share) await navigator.share(data);
-        else { await navigator.clipboard.writeText(window.location.href); showToast(); }
-      } catch (_) {}
-    });
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderIcons, { once: true });
-    else renderIcons();
-  </script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-</body>
+      .link-card--whatsapp {
+        background: #11110f;
+        color: #fff;
+        border-color: #11110f;
+        box-shadow: 0 14px 34px rgba(17,17,15,.16);
+      }
+      .link-card--whatsapp:hover { background: #1b1b19; border-color: #1b1b19; }
+      .link-card--whatsapp .link-icon { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.13); }
+      .link-card--whatsapp .link-subtitle { color: rgba(255,255,255,.62); }
+      .link-card--whatsapp .link-arrow { background: rgba(255,255,255,.10); }
+      .link-card--whatsapp:hover .link-arrow { background: rgba(255,255,255,.16); }
+
+      .social-row {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding-top: 26px;
+      }
+      .social-note {
+        text-align: center;
+        color: #8a867f;
+        font-size: .65rem;
+        letter-spacing: .20em;
+        text-transform: uppercase;
+        padding: 20px 0 3px;
+      }
+      .share-status {
+        position: fixed;
+        left: 50%;
+        bottom: max(18px, env(safe-area-inset-bottom));
+        transform: translate(-50%, 20px);
+        background: #11110f;
+        color: #fff;
+        border-radius: 999px;
+        padding: 11px 15px;
+        font-size: .75rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease;
+        white-space: nowrap;
+        z-index: 20;
+      }
+      .share-status.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+      @media (max-width: 420px) {
+        .links-page { padding-left: 14px; padding-right: 14px; }
+        .brand-block { padding-bottom: 20px; }
+        .brand-logo { width: 82px; height: 82px; margin-bottom: 13px; }
+        .link-card { min-height: 72px; grid-template-columns: 46px minmax(0, 1fr) 36px; gap: 12px; padding: 10px; }
+        .link-icon { width: 46px; height: 46px; }
+        .link-arrow { width: 36px; height: 36px; }
+        .link-title { font-size: .92rem; }
+        .link-subtitle { font-size: .72rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="links-page">
+      <div class="links-shell">
+        <header class="links-top">
+          <button class="share-button" type="button" aria-label="Compartir MERAKI" data-share>
+            <Icon name="share-2" size={19} strokeWidth={1.7} />
+          </button>
+        </header>
+
+        <section class="brand-block" aria-labelledby="links-title">
+          <img class="brand-logo" src="/logo-meraki.png" alt="MERAKI" width="88" height="88" />
+          <div class="brand-name-row">
+            <h1 class="brand-name" id="links-title">MERAKI</h1>
+            <span class="verified" aria-label="Cuenta verificada"><Icon name="check" size={10} strokeWidth={2.5} /></span>
+          </div>
+          <p class="brand-meta">Arquitectura & Construcción</p>
+          <p class="brand-tagline">De la idea a la obra, un solo equipo.</p>
+        </section>
+
+        <nav class="links-list" aria-label="Enlaces de MERAKI">
+          <a class="link-card" href="/">
+            <span class="link-icon"><Icon name="globe-2" size={22} strokeWidth={1.55} /></span>
+            <span class="link-copy"><span class="link-title">Visitar sitio web</span><span class="link-subtitle">Conoce más sobre MERAKI</span></span>
+            <span class="link-arrow"><Icon name="arrow-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+
+          <a class="link-card" href="/proyectos">
+            <span class="link-icon"><Icon name="folder-open" size={22} strokeWidth={1.55} /></span>
+            <span class="link-copy"><span class="link-title">Nuestros proyectos</span><span class="link-subtitle">Ideas que se hacen realidad</span></span>
+            <span class="link-arrow"><Icon name="arrow-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+
+          <a class="link-card" href="/servicios">
+            <span class="link-icon"><Icon name="ruler" size={22} strokeWidth={1.55} /></span>
+            <span class="link-copy"><span class="link-title">Nuestros servicios</span><span class="link-subtitle">Diseño, construcción y más</span></span>
+            <span class="link-arrow"><Icon name="arrow-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+
+          <a class="link-card link-card--whatsapp" href={`https://wa.me/${whatsapp}?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer">
+            <span class="link-icon"><Icon name="message-circle" size={23} strokeWidth={1.65} /></span>
+            <span class="link-copy"><span class="link-title">Conversemos por WhatsApp</span><span class="link-subtitle">{whatsappDisplay} · Te asesoramos sin compromiso</span></span>
+            <span class="link-arrow"><Icon name="arrow-up-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+
+          <a class="link-card" href="/estudio">
+            <span class="link-icon"><Icon name="users-round" size={22} strokeWidth={1.55} /></span>
+            <span class="link-copy"><span class="link-title">Conoce el estudio</span><span class="link-subtitle">Nuestro enfoque y equipo</span></span>
+            <span class="link-arrow"><Icon name="arrow-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+
+          <a class="link-card" href="/contacto">
+            <span class="link-icon"><Icon name="mail" size={22} strokeWidth={1.55} /></span>
+            <span class="link-copy"><span class="link-title">Contacto</span><span class="link-subtitle">Escríbenos directamente</span></span>
+            <span class="link-arrow"><Icon name="arrow-right" size={18} strokeWidth={1.55} /></span>
+          </a>
+        </nav>
+
+        <div class="social-row" aria-hidden="true">
+          <span class="social-note">MERAKI · ARQUITECTURA & CONSTRUCCIÓN</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="share-status" role="status" aria-live="polite" data-share-status>Enlace copiado</div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+    <script is:inline define:vars={{ shareUrl }}>
+      const initLinks = () => {
+        window.lucide?.createIcons({attrs:{'stroke-width':'1.6'}});
+
+        const button = document.querySelector('[data-share]');
+        const status = document.querySelector('[data-share-status]');
+        let timer;
+
+        const showStatus = (message) => {
+          if (!status) return;
+          status.textContent = message;
+          status.classList.add('is-visible');
+          window.clearTimeout(timer);
+          timer = window.setTimeout(() => status.classList.remove('is-visible'), 1900);
+        };
+
+        button?.addEventListener('click', async () => {
+          const url = new URL(shareUrl, window.location.origin).href;
+          const payload = { title: 'MERAKI · Arquitectura & Construcción', text: 'MERAKI · Arquitectura & Construcción', url };
+
+          try {
+            if (navigator.share) {
+              await navigator.share(payload);
+              showStatus('Compartido');
+              return;
+            }
+
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(url);
+              showStatus('Enlace copiado');
+              return;
+            }
+
+            const fallback = document.createElement('textarea');
+            fallback.value = url;
+            fallback.setAttribute('readonly', '');
+            fallback.style.position = 'fixed';
+            fallback.style.opacity = '0';
+            document.body.appendChild(fallback);
+            fallback.select();
+            document.execCommand('copy');
+            fallback.remove();
+            showStatus('Enlace copiado');
+          } catch (error) {
+            if (error?.name !== 'AbortError') showStatus('No se pudo compartir');
+          }
+        });
+      };
+
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initLinks, { once: true });
+      else initLinks();
+      window.addEventListener('load', () => window.lucide?.createIcons({attrs:{'stroke-width':'1.6'}}), { once: true });
+    </script>
+  </body>
 </html>
